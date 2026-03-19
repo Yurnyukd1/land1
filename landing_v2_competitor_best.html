@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Репетиторы по ЕГЭ и ОГЭ онлайн — 99 баллов</title>
+  <meta name="description" content="Индивидуальные занятия с проверенными репетиторами по ЕГЭ и ОГЭ онлайн. Средний балл учеников — 85+. Первый урок бесплатно. Только 15% педагогов проходят отбор." />
+  <meta property="og:title" content="Репетиторы по ЕГЭ и ОГЭ онлайн — 99 баллов" />
+  <meta property="og:description" content="Индивидуальные занятия с проверенными репетиторами. Средний балл 85+. Первый урок бесплатно." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    :root {
+      --brand-blue: #3c76df;
+      --brand-light: #94b1ff;
+      --brand-dark: #202335;
+      --brand-bg: #f0f4ff;
+    }
+    .brand-btn {
+      background: #3c76df;
+      color: white;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .brand-btn:hover { background: #2d62c7; }
+    .brand-btn-outline {
+      border: 2px solid #3c76df;
+      color: #3c76df;
+      border-radius: 8px;
+      font-weight: 600;
+      background: white;
+      transition: all 0.2s;
+    }
+    .brand-btn-outline:hover { background: #3c76df; color: white; }
+    .stat-card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(60,118,223,0.10); }
+    .tutor-card { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(32,35,53,0.08); border: 1px solid #e8eeff; }
+    .review-card { background: #f0f4ff; border-radius: 16px; border-left: 4px solid #3c76df; }
+    .step-num { background: #3c76df; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+    .sticky-bar { position: sticky; top: 0; z-index: 100; background: white; box-shadow: 0 2px 12px rgba(32,35,53,0.10); }
+    .hero-bg { background: linear-gradient(135deg, #e8eeff 0%, #f0f4ff 60%, #fff 100%); }
+    .urgency-bar { background: linear-gradient(90deg, #3c76df, #94b1ff); color: white; }
+    .badge { background: #e8eeff; color: #3c76df; border-radius: 20px; font-size: 12px; font-weight: 600; padding: 4px 10px; display: inline-block; }
+    .faq-item { border-bottom: 1px solid #e8eeff; }
+    .faq-item summary { cursor: pointer; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-icon { transition: transform 0.2s; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .float-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      box-shadow: 0 8px 32px rgba(60,118,223,0.35);
+      border-radius: 50px;
+      display: none;
+    }
+    .float-cta.visible { display: block; }
+    @media (max-width: 768px) {
+      .float-cta { bottom: 16px; right: 16px; left: 16px; }
+      .float-cta button { width: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+<!--
+  ВАРИАНТ A: Лучшие практики конкурентов
+  Гипотеза: структура, проверенная рынком — цена в hero (Умскул), карточки репетиторов (100балльный),
+  кейсы до→после (ЕГЭLAND), urgency-бар, sticky nav.
+  Ожидаемый эффект: снижение отказов, рост доверия, +25–40% к конверсии.
+-->
+
+<!-- Urgency bar (ЕГЭLAND паттерн) -->
+<div class="urgency-bar text-center py-2 px-4 text-sm font-medium">
+  🔥 До конца набора на апрель осталось <strong>8 мест</strong> — успей записаться на бесплатный урок
+</div>
+
+<!-- Sticky Nav -->
+<nav class="sticky-bar px-4 sm:px-8">
+  <div class="max-w-6xl mx-auto flex items-center justify-between h-14">
+    <a href="https://99-ballov.ru" class="flex items-center gap-2">
+      <span class="font-black text-xl" style="color:#3c76df">99 баллов</span>
+      <span class="badge">Репетиторы</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+      <a href="#how" class="hover:text-blue-600">Как это работает</a>
+      <a href="#tutors" class="hover:text-blue-600">Наши репетиторы</a>
+      <a href="#price" class="hover:text-blue-600">Цены</a>
+      <a href="#faq" class="hover:text-blue-600">FAQ</a>
+    </div>
+    <a href="#form" class="brand-btn px-5 py-2 text-sm">Записаться бесплатно</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-bg pt-12 pb-16 px-4 sm:px-8">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <div class="badge mb-4">Индивидуальные занятия онлайн</div>
+      <h1 class="text-4xl sm:text-5xl font-black leading-tight mb-4" style="color:#202335">
+        Сдай ЕГЭ на <span style="color:#3c76df">85+</span> с личным репетитором
+      </h1>
+      <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+        Репетиторы 99 баллов — проверенные педагоги с доказанными результатами. Только 15% кандидатов проходят наш отбор. Первый урок — бесплатно.
+      </p>
+      <!-- Social proof snippet (Умскул паттерн) -->
+      <div class="flex flex-wrap gap-3 mb-8">
+        <div class="stat-card px-4 py-2 text-center">
+          <div class="text-xl font-black" style="color:#3c76df">500+</div>
+          <div class="text-xs text-gray-500">учеников</div>
+        </div>
+        <div class="stat-card px-4 py-2 text-center">
+          <div class="text-xl font-black" style="color:#3c76df">85+</div>
+          <div class="text-xs text-gray-500">средний балл</div>
+        </div>
+        <div class="stat-card px-4 py-2 text-center">
+          <div class="text-xl font-black" style="color:#3c76df">9.2/10</div>
+          <div class="text-xs text-gray-500">оценка учеников</div>
+        </div>
+        <div class="stat-card px-4 py-2 text-center">
+          <div class="text-xl font-black" style="color:#3c76df">от 4000₽</div>
+          <div class="text-xs text-gray-500">в месяц</div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#form" class="brand-btn px-8 py-4 text-base text-center">Записаться на бесплатный урок</a>
+        <a href="#tutors" class="brand-btn-outline px-6 py-4 text-base text-center">Посмотреть репетиторов</a>
+      </div>
+      <p class="text-xs text-gray-400 mt-3">Без предоплаты · Отмена в любой момент · Замена репетитора бесплатно</p>
+    </div>
+    <div class="hidden md:block">
+      <img src="https://placehold.co/540x440/e8eeff/3c76df?text=Ученик+и+репетитор+онлайн" alt="Онлайн-урок с репетитором 99 баллов" class="rounded-2xl w-full shadow-lg" />
+    </div>
+  </div>
+</section>
+
+<!-- Pain block (ЕГЭLAND паттерн) -->
+<section class="py-14 px-4 sm:px-8 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Узнаёшь себя?</h2>
+    <p class="text-center text-gray-500 mb-10">Ситуации, с которыми к нам приходят чаще всего</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-red-50 border border-red-100 rounded-xl p-5">
+        <div class="text-2xl mb-2">😰</div>
+        <p class="font-semibold text-gray-800 mb-1">До ЕГЭ 3 месяца</p>
+        <p class="text-sm text-gray-500">и кажется, что не успею подготовиться ко всем темам</p>
+      </div>
+      <div class="bg-orange-50 border border-orange-100 rounded-xl p-5">
+        <div class="text-2xl mb-2">😤</div>
+        <p class="font-semibold text-gray-800 mb-1">Не понимаю тему</p>
+        <p class="text-sm text-gray-500">учитель в школе объяснил, но всё равно непонятно</p>
+      </div>
+      <div class="bg-yellow-50 border border-yellow-100 rounded-xl p-5">
+        <div class="text-2xl mb-2">📉</div>
+        <p class="font-semibold text-gray-800 mb-1">Пробники не растут</p>
+        <p class="text-sm text-gray-500">занимаюсь сам, но результаты стоят на месте</p>
+      </div>
+      <div class="bg-purple-50 border border-purple-100 rounded-xl p-5">
+        <div class="text-2xl mb-2">🎯</div>
+        <p class="font-semibold text-gray-800 mb-1">Нужен конкретный балл</p>
+        <p class="text-sm text-gray-500">для поступления в вуз нужно 80+, а сейчас 60</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Кейсы до→после (ЕГЭLAND паттерн) -->
+<section class="py-14 px-4 sm:px-8" style="background:#f0f4ff">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Результаты наших учеников</h2>
+    <p class="text-center text-gray-500 mb-10">Реальные истории — с именами, баллами и вузами</p>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <!-- Кейс 1 -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="https://placehold.co/48x48/94b1ff/ffffff?text=М" alt="Максим" class="rounded-full w-12 h-12" />
+          <div>
+            <div class="font-bold text-gray-900">Максим, 11 класс</div>
+            <div class="text-xs text-gray-400">Математика · 4 месяца</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+          <div class="text-center">
+            <div class="text-2xl font-black text-gray-400">58</div>
+            <div class="text-xs text-gray-400">было</div>
+          </div>
+          <div class="text-3xl" style="color:#3c76df">→</div>
+          <div class="text-center">
+            <div class="text-2xl font-black" style="color:#3c76df">97</div>
+            <div class="text-xs" style="color:#3c76df">стало</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 italic">"Начинал с 58 баллов на пробнике, через 4 месяца занятий с репетитором сдал на 97. Поступил в МИФИ."</p>
+      </div>
+      <!-- Кейс 2 -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="https://placehold.co/48x48/94b1ff/ffffff?text=Т" alt="Таня" class="rounded-full w-12 h-12" />
+          <div>
+            <div class="font-bold text-gray-900">Таня, 11 класс</div>
+            <div class="text-xs text-gray-400">Русский + История · 5 месяцев</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+          <div class="text-center">
+            <div class="text-2xl font-black text-gray-400">63</div>
+            <div class="text-xs text-gray-400">было</div>
+          </div>
+          <div class="text-3xl" style="color:#3c76df">→</div>
+          <div class="text-center">
+            <div class="text-2xl font-black" style="color:#3c76df">98 / 94</div>
+            <div class="text-xs" style="color:#3c76df">стало</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 italic">"Я занималась с репетитором по русскому и истории. Результат превзошёл ожидания — поступила в МГЮА."</p>
+      </div>
+      <!-- Кейс 3 -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="https://placehold.co/48x48/94b1ff/ffffff?text=М" alt="Майя" class="rounded-full w-12 h-12" />
+          <div>
+            <div class="font-bold text-gray-900">Майя, 11 класс</div>
+            <div class="text-xs text-gray-400">Литература · 6 месяцев</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+          <div class="text-center">
+            <div class="text-2xl font-black text-gray-400">70</div>
+            <div class="text-xs text-gray-400">было</div>
+          </div>
+          <div class="text-3xl" style="color:#3c76df">→</div>
+          <div class="text-center">
+            <div class="text-2xl font-black" style="color:#3c76df">96</div>
+            <div class="text-xs" style="color:#3c76df">стало</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 italic">"Репетитор помог структурировать все темы. Через 6 месяцев — 96 баллов по литературе. Поступила в ГИТИС."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works (рыночный стандарт, 5 шагов) -->
+<section id="how" class="py-14 px-4 sm:px-8 bg-white">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Как это работает</h2>
+    <p class="text-center text-gray-500 mb-10">От заявки до результата за 5 шагов</p>
+    <div class="space-y-6">
+      <div class="flex gap-4 items-start">
+        <div class="step-num">1</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Оставляешь заявку</div>
+          <p class="text-sm text-gray-500">Указываешь предмет, экзамен и текущий уровень. Занимает 2 минуты.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-num">2</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Менеджер подбирает репетитора</div>
+          <p class="text-sm text-gray-500">В течение 1 дня мы предлагаем подходящего репетитора с учётом твоих слабых тем и цели.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-num">3</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Бесплатное пробное занятие</div>
+          <p class="text-sm text-gray-500">Первый урок — за наш счёт. Познакомишься с репетитором и убедишься, что формат подходит.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-num">4</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Индивидуальный план подготовки</div>
+          <p class="text-sm text-gray-500">Репетитор составляет план именно под твои пробелы — не общую программу, а конкретный маршрут к цели.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-num">5</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Растёшь и сдаёшь</div>
+          <p class="text-sm text-gray-500">8 из 10 учеников поднимают балл за первые 2 месяца. Пробные экзамены и контроль прогресса включены.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Карточки репетиторов (100балльный паттерн) -->
+<section id="tutors" class="py-14 px-4 sm:px-8" style="background:#f0f4ff">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-4">
+      <span class="badge">Только 15% кандидатов проходят отбор</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Наши репетиторы</h2>
+    <p class="text-center text-gray-500 mb-10">Проверяем опыт, результаты учеников и методику работы</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Репетитор 1 -->
+      <div class="tutor-card p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://placehold.co/64x64/94b1ff/ffffff?text=АК" alt="Репетитор Анна" class="rounded-full w-16 h-16" />
+          <div>
+            <div class="font-bold text-gray-900">[Имя репетитора]</div>
+            <div class="text-sm" style="color:#3c76df">Математика</div>
+          </div>
+        </div>
+        <div class="flex gap-3 mb-4 flex-wrap">
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">98</div>
+            <div class="text-xs text-gray-400">личный балл ЕГЭ</div>
+          </div>
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">5 лет</div>
+            <div class="text-xs text-gray-400">опыт</div>
+          </div>
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">87+</div>
+            <div class="text-xs text-gray-400">ср. балл учеников</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mb-4">3 из 4 учеников вырастают на 20+ баллов за 3 месяца</p>
+        <a href="#form" class="brand-btn px-4 py-2 text-sm block text-center">Выбрать этого репетитора</a>
+      </div>
+      <!-- Репетитор 2 -->
+      <div class="tutor-card p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://placehold.co/64x64/94b1ff/ffffff?text=СМ" alt="Репетитор Сергей" class="rounded-full w-16 h-16" />
+          <div>
+            <div class="font-bold text-gray-900">[Имя репетитора]</div>
+            <div class="text-sm" style="color:#3c76df">Русский язык</div>
+          </div>
+        </div>
+        <div class="flex gap-3 mb-4 flex-wrap">
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">100</div>
+            <div class="text-xs text-gray-400">личный балл ЕГЭ</div>
+          </div>
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">7 лет</div>
+            <div class="text-xs text-gray-400">опыт</div>
+          </div>
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">90+</div>
+            <div class="text-xs text-gray-400">ср. балл учеников</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mb-4">Специализируется на работе с сочинением — самая сложная часть ЕГЭ</p>
+        <a href="#form" class="brand-btn px-4 py-2 text-sm block text-center">Выбрать этого репетитора</a>
+      </div>
+      <!-- Репетитор 3 -->
+      <div class="tutor-card p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://placehold.co/64x64/94b1ff/ffffff?text=ЕВ" alt="Репетитор Елена" class="rounded-full w-16 h-16" />
+          <div>
+            <div class="font-bold text-gray-900">[Имя репетитора]</div>
+            <div class="text-sm" style="color:#3c76df">Обществознание</div>
+          </div>
+        </div>
+        <div class="flex gap-3 mb-4 flex-wrap">
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">95</div>
+            <div class="text-xs text-gray-400">личный балл ЕГЭ</div>
+          </div>
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">4 года</div>
+            <div class="text-xs text-gray-400">опыт</div>
+          </div>
+          <div class="bg-blue-50 rounded-lg px-3 py-1 text-center">
+            <div class="font-bold text-sm" style="color:#3c76df">85+</div>
+            <div class="text-xs text-gray-400">ср. балл учеников</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mb-4">Знает все "ловушки" в заданиях ЕГЭ по обществу — учит не попадаться</p>
+        <a href="#form" class="brand-btn px-4 py-2 text-sm block text-center">Выбрать этого репетитора</a>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <p class="text-sm text-gray-500 mb-3">Нет нужного предмета? У нас 30+ репетиторов по всем предметам ЕГЭ и ОГЭ</p>
+      <a href="#form" class="brand-btn-outline px-8 py-3 text-sm inline-block">Подобрать репетитора под мой предмет</a>
+    </div>
+  </div>
+</section>
+
+<!-- Преимущества (переписано под репетиторов, не курсы) -->
+<section class="py-14 px-4 sm:px-8 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Почему репетитор 99 баллов лучше частного</h2>
+    <p class="text-center text-gray-500 mb-10">Ты получаешь не просто репетитора, а целую систему подготовки</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="flex gap-4 items-start p-5 rounded-xl" style="background:#f0f4ff">
+        <div class="text-2xl">📋</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Личный план по твоим пробелам</div>
+          <p class="text-sm text-gray-500">Не общая программа, а маршрут именно под твой текущий уровень и целевой балл</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start p-5 rounded-xl" style="background:#f0f4ff">
+        <div class="text-2xl">🔁</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Замена репетитора бесплатно</div>
+          <p class="text-sm text-gray-500">Если что-то не нравится — меняем без вопросов. Главное — твой результат</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start p-5 rounded-xl" style="background:#f0f4ff">
+        <div class="text-2xl">📱</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Платформа 99 баллов в комплекте</div>
+          <p class="text-sm text-gray-500">Тренажёры, пробные ЕГЭ и материалы к каждому занятию — в одном месте</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start p-5 rounded-xl" style="background:#f0f4ff">
+        <div class="text-2xl">✅</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Проверка домашних заданий</div>
+          <p class="text-sm text-gray-500">Репетитор разбирает ошибки, а не просто проверяет — ты понимаешь почему ошибся</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start p-5 rounded-xl" style="background:#f0f4ff">
+        <div class="text-2xl">🎥</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Записи занятий навсегда</div>
+          <p class="text-sm text-gray-500">Пропустил урок или не понял тему — пересматривай сколько угодно</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start p-5 rounded-xl" style="background:#f0f4ff">
+        <div class="text-2xl">👨‍👩‍👧</div>
+        <div>
+          <div class="font-bold text-gray-900 mb-1">Отчёты для родителей</div>
+          <p class="text-sm text-gray-500">Родители видят прогресс, темы занятий и оценки — полная прозрачность</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Цены (Умскул паттерн — прозрачно) -->
+<section id="price" class="py-14 px-4 sm:px-8" style="background:#f0f4ff">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Цены</h2>
+    <p class="text-center text-gray-500 mb-10">Без скрытых платежей — платишь только за занятия</p>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <!-- Тариф 1 -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div class="font-bold text-lg text-gray-900 mb-1">Старт</div>
+        <div class="text-3xl font-black mb-1" style="color:#3c76df">4 000₽</div>
+        <div class="text-sm text-gray-400 mb-4">в месяц · 4 занятия</div>
+        <ul class="space-y-2 text-sm text-gray-600 mb-6">
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>1 занятие в неделю (60 мин)</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Индивидуальный план</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Проверка ДЗ</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Доступ к платформе</li>
+        </ul>
+        <a href="#form" class="brand-btn-outline px-4 py-2 text-sm block text-center">Начать</a>
+      </div>
+      <!-- Тариф 2 — рекомендуемый -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg border-2" style="border-color:#3c76df; position: relative;">
+        <div class="badge absolute -top-3 left-1/2 -translate-x-1/2">Популярный</div>
+        <div class="font-bold text-lg text-gray-900 mb-1">Интенсив</div>
+        <div class="text-3xl font-black mb-1" style="color:#3c76df">7 500₽</div>
+        <div class="text-sm text-gray-400 mb-4">в месяц · 8 занятий</div>
+        <ul class="space-y-2 text-sm text-gray-600 mb-6">
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>2 занятия в неделю (60 мин)</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Индивидуальный план</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Проверка ДЗ с разбором</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Пробные ЕГЭ/ОГЭ</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Отчёты для родителей</li>
+        </ul>
+        <a href="#form" class="brand-btn px-4 py-2 text-sm block text-center">Начать</a>
+      </div>
+      <!-- Тариф 3 -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div class="font-bold text-lg text-gray-900 mb-1">Максимум</div>
+        <div class="text-3xl font-black mb-1" style="color:#3c76df">12 000₽</div>
+        <div class="text-sm text-gray-400 mb-4">в месяц · 12 занятий</div>
+        <ul class="space-y-2 text-sm text-gray-600 mb-6">
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>3 занятия в неделю (60 мин)</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Приоритетный подбор репетитора</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Куратор + репетитор</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Пробные ЕГЭ каждые 2 недели</li>
+          <li class="flex gap-2"><span style="color:#3c76df">✓</span>Рассрочка без переплат</li>
+        </ul>
+        <a href="#form" class="brand-btn-outline px-4 py-2 text-sm block text-center">Начать</a>
+      </div>
+    </div>
+    <p class="text-center text-sm text-gray-400 mt-6">Доступна рассрочка без процентов · Первый урок всегда бесплатно</p>
+  </div>
+</section>
+
+<!-- Форма заявки -->
+<section id="form" class="py-14 px-4 sm:px-8 bg-white">
+  <div class="max-w-xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-3" style="color:#202335">Записаться на бесплатный урок</h2>
+    <p class="text-center text-gray-500 mb-8">Менеджер свяжется в течение 1 часа и подберёт репетитора</p>
+    <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
+          <input type="text" placeholder="Как вас зовут?" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue-400" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Телефон</label>
+          <input type="tel" placeholder="+7 (___) ___-__-__" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue-400" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Предмет</label>
+          <select class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue-400 bg-white">
+            <option>Математика</option>
+            <option>Русский язык</option>
+            <option>Обществознание</option>
+            <option>История</option>
+            <option>Английский язык</option>
+            <option>Физика</option>
+            <option>Химия</option>
+            <option>Биология</option>
+            <option>Другой предмет</option>
+          </select>
+        </div>
+        <button type="button" class="brand-btn w-full py-4 text-base">Записаться на бесплатный урок</button>
+        <p class="text-xs text-center text-gray-400">Нажимая кнопку, вы соглашаетесь с <a href="#" class="underline">политикой конфиденциальности</a>. Без спама.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (переписан под репетиторов) -->
+<section id="faq" class="py-14 px-4 sm:px-8" style="background:#f0f4ff">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-black text-center mb-10" style="color:#202335">Частые вопросы</h2>
+    <div class="space-y-1">
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Сколько стоит занятие с репетитором?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">Стоимость занятия зависит от выбранного пакета: от 1000₽ до 1700₽ за урок 60 минут. Подробные цены — в разделе выше. Есть рассрочка без переплат.</div>
+      </details>
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Как подбирается репетитор именно под меня?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">Менеджер уточняет предмет, целевой балл, слабые темы и удобное время занятий. На основе этого подбирает репетитора из нашей базы. Обычно это занимает 1 рабочий день.</div>
+      </details>
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Что если репетитор не подошёл?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">Меняем репетитора бесплатно и без вопросов. Главное для нас — чтобы ты рос. Замена обычно происходит в течение 1–2 дней.</div>
+      </details>
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Как проходит первое занятие?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">Первый урок — бесплатный и диагностический. Репетитор знакомится с тобой, проверяет уровень знаний и намечает план работы. Никаких обязательств после него нет.</div>
+      </details>
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Сколько занятий в неделю нужно?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">Рекомендуем 2 занятия в неделю — это оптимальный ритм для заметного прогресса. При желании можно заниматься 3 раза в неделю или 1 раз при плотной самостоятельной подготовке.</div>
+      </details>
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Как родители могут следить за прогрессом?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">После каждого урока репетитор оставляет краткий отчёт: что разобрали, что задано, как проходит подготовка. Родители получают доступ к отчётам через платформу.</div>
+      </details>
+      <details class="faq-item bg-white rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-medium text-gray-900">
+          Есть ли возврат денег?
+          <span class="faq-icon text-xl font-light text-gray-400">+</span>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600">Да. Если после оплаченных занятий результат тебя не устраивает — возвращаем деньги за неиспользованные уроки. Условия возврата указаны в договоре.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 px-4 sm:px-8 bg-white border-t border-gray-100">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+    <div>
+      <span class="font-black text-base" style="color:#3c76df">99 баллов</span>
+      <span class="ml-2">— онлайн-школа подготовки к ЕГЭ и ОГЭ</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="https://99-ballov.ru" class="hover:text-gray-600">Главная</a>
+      <a href="#" class="hover:text-gray-600">Политика конфиденциальности</a>
+      <a href="#" class="hover:text-gray-600">Договор-оферта</a>
+    </div>
+    <div>ООО «99 Баллов» · ИНН [ХХХХ]</div>
+  </div>
+</footer>
+
+<!-- Floating CTA -->
+<div class="float-cta" id="floatCta">
+  <a href="#form" class="brand-btn px-6 py-3 text-sm block">Записаться на бесплатный урок →</a>
+</div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    var cta = document.getElementById('floatCta');
+    if (window.scrollY > 400) {
+      cta.classList.add('visible');
+    } else {
+      cta.classList.remove('visible');
+    }
+  });
+  // FAQ smooth toggle
+  document.querySelectorAll('details').forEach(function(d) {
+    d.addEventListener('toggle', function() {});
+  });
+</script>
+
+</body>
+</html>
